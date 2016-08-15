@@ -5,9 +5,9 @@ MAINTAINER Tristan Salles
 
 WORKDIR /build
 RUN git clone https://github.com/pyReef-model/pyReef.git
-WORKDIR /build/pyReef/Model/libUtils
-RUN make
-RUN pip install -e /build/pyReef
+#WORKDIR /build/pyReef/Model/libUtils
+#RUN make
+#RUN pip install -e /build/pyReef
 
 ENV TINI_VERSION v0.8.4
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/local/bin/tini

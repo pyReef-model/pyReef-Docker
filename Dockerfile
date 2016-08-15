@@ -1,5 +1,5 @@
 # Pull base image.
-FROM badlandsmodel/pybadlands-dependencies
+FROM pyreefmodel/pyreef-dependencies-docker
 
 MAINTAINER Tristan Salles
 

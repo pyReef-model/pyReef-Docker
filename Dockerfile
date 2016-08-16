@@ -5,7 +5,7 @@ MAINTAINER Tristan Salles
 
 WORKDIR /build
 RUN git clone https://github.com/pyReef-model/pyReef.git
-WORKDIR /build/pyReef/Model/libUtils
+WORKDIR /build/pyReef/pyReef/libUtils
 RUN make clobber
 RUN make dist
 RUN pip install -e /build/pyReef
@@ -35,5 +35,5 @@ WORKDIR /workspace
 EXPOSE 8888
 ENTRYPOINT ["/usr/local/bin/tini", "--"]
 
-ENV LD_LIBRARY_PATH=/workspace/volume/pyReef/Model/libUtils:/build/pyReef/Model/libUtils
+ENV LD_LIBRARY_PATH=/workspace/volume/pyReef/pyReef/libUtils:/build/pyReef/pyReef/libUtils
 CMD /build/run.sh

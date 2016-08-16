@@ -22,7 +22,7 @@ RUN mkdir /workspace && \
     mkdir /workspace/volume 
 
 # Copy test files to workspace
-RUN cp -av /build/pyReef/Test/* /workspace/
+RUN cp -av /build/pyReef/Test /workspace/
 
 COPY run.sh /build
 RUN chmod +x /build/run.sh

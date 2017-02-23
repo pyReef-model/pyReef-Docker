@@ -4,6 +4,10 @@ FROM pyreefmodel/pyreef-dependencies-docker
 MAINTAINER Tristan Salles
 
 WORKDIR /build
+RUN pip install -e git+https://github.com/hplgit/odespy.git#egg=odespy
+RUN cd src/odespy; python setup.py install
+
+WORKDIR /build
 RUN git clone https://github.com/pyReef-model/pyReef.git
 WORKDIR /build/pyReef/pyReef/libUtils
 RUN make clobber

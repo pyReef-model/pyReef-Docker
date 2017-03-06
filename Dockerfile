@@ -15,6 +15,11 @@ RUN make clobber
 RUN make dist
 RUN pip install -e /build/pyReef
 
+
+WORKDIR /build
+RUN git clone https://github.com/pyReef-model/pyReefCore.git
+RUN pip install -e /build/pyReefCore
+
 ENV TINI_VERSION v0.8.4
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/local/bin/tini
 RUN chmod +x /usr/local/bin/tini

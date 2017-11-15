@@ -8,12 +8,12 @@ RUN pip install -e git+https://github.com/hplgit/odespy.git#egg=odespy
 WORKDIR /build/src/odespy
 RUN python setup.py install
 
-WORKDIR /build
-RUN git clone https://github.com/pyReef-model/pyReef.git
-WORKDIR /build/pyReef/pyReef/libUtils
-RUN make clobber
-RUN make dist
-RUN pip install -e /build/pyReef
+#WORKDIR /build
+#RUN git clone https://github.com/pyReef-model/pyReef.git
+#WORKDIR /build/pyReef/pyReef/libUtils
+#RUN make clobber
+#RUN make dist
+#RUN pip install -e /build/pyReef
 
 
 WORKDIR /build
@@ -32,7 +32,7 @@ RUN mkdir /workspace && \
     mkdir /workspace/volume 
 
 # Copy test files to workspace
-RUN cp -av /build/pyReef/Test /workspace/
+RUN cp -av /build/pyReefCore/Tests /workspace/
 
 COPY run.sh /build
 RUN chmod +x /build/run.sh
@@ -45,5 +45,5 @@ WORKDIR /workspace
 EXPOSE 8888
 ENTRYPOINT ["/usr/local/bin/tini", "--"]
 
-ENV LD_LIBRARY_PATH=/workspace/volume/pyReef/pyReef/libUtils:/build/pyReef/pyReef/libUtils
+ENV LD_LIBRARY_PATH=/workspace/volume/pyReefCore/pyReefCore/libUtils:/build/pyReefCore/pyReefCore/libUtils
 CMD /build/run.sh
